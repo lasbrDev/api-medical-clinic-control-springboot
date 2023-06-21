@@ -10,7 +10,7 @@ import voll.med.api.endereco.DadosEndereco;
         @NotBlank
         String nome,
         @NotBlank
-        @Pattern(regexp = "\\d{3}\\.?\\d{3}\\.?\\d{3}\\-?d{2}")
+        @Pattern(regexp = "\\d{3}\\.?\\d{3}\\.?\\d{3}\\-?\\d{2}")
         String cpf,
         @NotBlank
         String email,
