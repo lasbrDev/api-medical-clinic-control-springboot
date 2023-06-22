@@ -14,7 +14,7 @@ import voll.med.api.domain.usuario.Usuario;
 import voll.med.api.infra.security.DadosTokenJWT;
 import voll.med.api.infra.security.TokenService;
 
-@RestController
+    @RestController
     @RequestMapping("/login")
     public class AutenticacaoController {
 
