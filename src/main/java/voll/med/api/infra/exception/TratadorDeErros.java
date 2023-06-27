@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import voll.med.api.domain.ValidacaoException;
 
-@RestControllerAdvice
+    @RestControllerAdvice
     public class TratadorDeErros {
 
         @ExceptionHandler(EntityNotFoundException.class)
