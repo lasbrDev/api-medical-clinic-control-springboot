@@ -13,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import voll.med.api.domain.consulta.AgendaDeConsultas;
 import voll.med.api.domain.consulta.DadosAgendamentoConsulta;
 import voll.med.api.domain.consulta.DadosDetalhamentoConsulta;
