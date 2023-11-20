@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  vollmed-mysql:
+    image: mysql:latest
+    container_name: vollmed-mysql
+    environment:
+      MYSQL_ROOT_USERNAME: root
+      MYSQL_ROOT_PASSWORD: lasBr01
+      MYSQL_DATABASE: vollmed_api
+    networks:
+      - REDEVOL
+    ports:
+      - "3306:3306"
+    volumes:
+      - vollmed-mysql-data:/var/lib/mysql
+
+  flyway:
+    image: flyway/flyway:latest
+    container_name: vollmed-flyway
+    environment:
+      - FLYWAY_URL=jdbc:mysql://vollmed-mysql:3306/vollmed_api
+      - FLYWAY_USER=root
+      - FLYWAY_PASSWORD=lasBr01
+    networks:
+      - REDEVOL
+
+networks:
+  REDEVOL:
+    driver: bridge
+
+volumes:
+  vollmed-mysql-data:
