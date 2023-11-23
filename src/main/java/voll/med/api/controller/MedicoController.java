@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -18,16 +19,23 @@ import voll.med.api.domain.medico.*;
     public class MedicoController {
 
     @Autowired
+    private MedicoService service;
+
+    @Autowired
     private MedicoRepository repository;
+
+        @Autowired
+        public MedicoController(MedicoService service) {
+            this.service = service;
+        }
 
         @PostMapping
         @Transactional
-        public ResponseEntity cadastrar(
+        public ResponseEntity<DadosDetalhamentoMedico> cadastrar(
                 @RequestBody @Valid DadosCadastroMedico dados, UriComponentsBuilder uriBuilder) {
-            repository.save(new Medico(dados));
-            var medico = new Medico(dados);
+            Medico medico = service.cadastrarMedico(dados);
             var uri = uriBuilder.path("/medicos/{id}").buildAndExpand(medico.getId()).toUri();
-            return ResponseEntity.created(uri).body(new DadosDetalhamentoMedico(medico));
+            return ResponseEntity.status(HttpStatus.CREATED).location(uri).body(new DadosDetalhamentoMedico(medico));
         }
         @GetMapping
         public ResponseEntity<Page<DadosListagemMedico>> listar(
