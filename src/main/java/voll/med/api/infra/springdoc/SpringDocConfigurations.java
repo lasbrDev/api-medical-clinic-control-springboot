@@ -23,7 +23,8 @@ import org.springframework.context.annotation.Configuration;
                                             .bearerFormat("JWT")))
                     .info(new Info()
                             .title("Voll.med API")
-                            .description("API Rest da aplicação Voll.med, contendo as funcionalidades de CRUD de médicos e de pacientes, além de agendamento e cancelamento de consultas")
+                            .description("API Rest da aplicação Voll.med, contendo as funcionalidades de " +
+                                    "CRUD de médicos e de pacientes, além de agendamento e cancelamento de consultas")
                             .contact(new Contact()
                                     .name("Time Backend")
                                     .email("lasbr_alves@outlook.com"))

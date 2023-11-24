@@ -30,12 +30,11 @@ import voll.med.api.domain.medico.*;
         }
 
         @PostMapping
-        @Transactional
-        public ResponseEntity<DadosDetalhamentoMedico> cadastrar(
+        public ResponseEntity<DadosListagemMedico> cadastrar(
                 @RequestBody @Valid DadosCadastroMedico dados, UriComponentsBuilder uriBuilder) {
-            Medico medico = service.cadastrarMedico(dados);
-            var uri = uriBuilder.path("/medicos/{id}").buildAndExpand(medico.getId()).toUri();
-            return ResponseEntity.status(HttpStatus.CREATED).location(uri).body(new DadosDetalhamentoMedico(medico));
+            DadosListagemMedico dadosListagem = service.cadastrarMedico(dados);
+            var uri = uriBuilder.path("/medicos/{id}").buildAndExpand(dadosListagem.id()).toUri();
+            return ResponseEntity.status(HttpStatus.CREATED).location(uri).body(dadosListagem);
         }
         @GetMapping
         public ResponseEntity<Page<DadosListagemMedico>> listar(
